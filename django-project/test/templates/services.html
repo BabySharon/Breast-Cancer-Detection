@@ -1,3 +1,4 @@
+{% load static %}
 <!--
 Author: W3layouts
 Author URL: http://w3layouts.com
@@ -26,10 +27,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </script>
     <!-- //Meta tag Keywords -->
     <!-- Custom-Files -->
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
     <!-- Bootstrap-Core-CSS -->
-    <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-    <link rel="stylesheet" href="css/slider.css" type="text/css" media="all" />
+    <link rel="stylesheet"  href="{% static 'css/style.css' %}" type="text/css" media="all" />
+    <link rel="stylesheet" href="{% static 'css/slider.css' %}" type="text/css" media="all" />
     <!-- Style-CSS -->
     <!-- font-awesome-icons -->
     <link href="css/font-awesome.css" rel="stylesheet">
@@ -42,8 +43,10 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     <!-- //Fonts -->
     <style>
         html,body{
-            background-color: #f0f0f0 ;
-            height:100%;
+/*            background-color: #f0f0f0 ;*/
+            background: rgb(2,0,36);
+background: rgb(238,174,202);
+background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
         }
     </style>
 </head>
@@ -69,7 +72,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                     </div>
 
                     <div class="col-lg-6 content-left">
-                        <img src="images/lab.png" alt="" class="img-fluid">
+                        <img src="{% static 'images/lab.png' %}" alt="" class="img-fluid">
                     </div>
 
                 </div>
