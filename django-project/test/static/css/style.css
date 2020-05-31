@@ -537,11 +537,35 @@ li.icons a.dribble {
     background: #ea4c89;
 }
 
-/*
+
 .main-w3layouts-header-sec{
     position: relative;
 }
-*/
+
+/* .alert-warning, .alert-success{
+    position: absolute;
+} */
+.close{
+    position: absolute;
+    z-index: 12;
+    margin-right: 0px;
+
+}
+.close-alert{
+    margin: auto;   
+    display: flex;
+    justify-content: center;
+    
+
+}
+.alert {
+    position: absolute;
+    padding: 0.75rem 1.25rem;
+    /*margin-bottom: 1rem; */
+    border: 1px solid transparent;
+    border-radius: 0.25rem;
+    z-index:11;
+  }
 
 .bgbox{
     width:100%;
@@ -553,16 +577,19 @@ li.icons a.dribble {
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: 2;
+    z-index: 10;
     display: none;
+}
+img{
+    height: 500px;
 }
 .box-content{
     width: 700px;
-    height:500px;
+    height:600px;
     background-color: white;
     border-radius: 4px;
     text-align: center;
-    padding: 20px;
+    padding: 40px;
     position: relative;
     
   
@@ -1001,6 +1028,7 @@ h3.title-w3pvt.two {
     -o-background-size: cover;
     -moz-background-size: cover;
     min-height: 25em;
+    
 }
 
 .overlay.inner {
@@ -1820,7 +1848,7 @@ a.move-top span {
 /*-- //Responsive design --*/
 
 .pro-icon {
-    height: 40%;
+    height: 30%;
     width: 30%;
     border-radius: 100px;
     border-color: #4788c7;
