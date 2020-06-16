@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 # from django.http import HttpResponse
-from .forms import SignIn
+from .forms import SignIn, PatientForm
 from django.contrib import messages
 
 
@@ -27,5 +27,23 @@ def addUser(request):
         return redirect('home')
 
 
+def login(request):
+    
+
 def test(request):
-    return render(request, 'services.html')
+    form = PatientForm()
+    print("reched get")
+    if request.method == 'POST':
+        print("fulfilled condition")
+        form = PatientForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            print('reached')
+            form.save()
+            form = PatientForm()
+        else:
+            print(form.errors)
+    context = {'form':form}    
+    return render(request, 'services.html',context)
+
+    

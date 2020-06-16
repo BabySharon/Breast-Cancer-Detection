@@ -2,7 +2,7 @@ from django import forms
 from django.forms import ModelForm
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import userModel
+from .models import userModel, Patient
 
 class SignIn(UserCreationForm):
     # username = forms.CharField(max_length=100,
@@ -28,3 +28,11 @@ class SignIn(UserCreationForm):
         #     'password2': forms.PasswordInput(attrs={'placeholder':'Confirm Password'})
         # }
 
+
+class PatientForm(ModelForm):
+    class Meta:
+        model = Patient
+        fields = ['pname','age','testfile']
+        widgets = {
+            'pname': forms.TextInput(attrs={'placeholder':'Patient Name'}), 'age' : forms.NumberInput(attrs={'placeholder':'Age'}), 
+        }

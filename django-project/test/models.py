@@ -7,7 +7,7 @@ class Patient(models.Model):
     age = models.IntegerField()
     testfile = models.FileField(upload_to='images/', )
     date_uploaded = models.DateTimeField(default=timezone.now)
-    doctor = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    # doctor = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     #App to be used in a laboratory
     #Even if the doctor account deleted patient records are to be saved
     #If the patient record is to be deleted when doctor is deleted, then, add argument, on_delete=models.CASCADE
