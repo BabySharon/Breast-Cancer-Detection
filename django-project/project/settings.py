@@ -38,7 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'predictor.apps.PredictorConfig',
+   
 ]
 
 MIDDLEWARE = [
@@ -125,4 +125,4 @@ STATIC_URL = '/static/'
 MEDIA_ROOT= os.path.join(BASE_DIR, 'media')
 MEDIA_URL= "/media/"
 
-MODELS = os.path.join(BASE_DIR, 'predictor/models')
+# MODELS = os.path.join(BASE_DIR, 'predictor/models')
