@@ -26,6 +26,7 @@ class TestConfig(AppConfig):
     idx_to_class={}
     
     def load_checkpoint(filepath):
+        print(filepath)
         checkpoint = torch.load(filepath,map_location=lambda storage, loc: storage)
         model = models.resnet152()
         
@@ -43,8 +44,7 @@ class TestConfig(AppConfig):
 
     # Replacing the pretrained model classifier with our classifier
         model.fc = classifier
-        
-        
+               
         model.load_state_dict(checkpoint['state_dict'])
         
         return model, checkpoint['class_to_idx']
@@ -92,7 +92,9 @@ class TestConfig(AppConfig):
         image = torch.FloatTensor([TestConfig.process_image(Image.open(image_path))])
         model.eval()
         output = model.forward(Variable(image))
+        print(output)
         pobabilities = torch.exp(output).data.numpy()[0]
+        print(pobabilities)
         
 
         top_idx = np.argsort(pobabilities)[-topk:][::-1] 
@@ -101,15 +103,37 @@ class TestConfig(AppConfig):
 
         return top_probability, top_class
 
+    def imshow(image, ax=None, title=None):
+        """Imshow for Tensor."""
+        if ax is None:
+            fig, ax = plt.subplots()
+        
+        # PyTorch tensors assume the color channel is the first dimension
+        # but matplotlib assumes is the third dimension
+        image = image.numpy().transpose((1, 2, 0))
+        
+        # Undo preprocessing
+        mean = np.array([0.485, 0.456, 0.406])
+        std = np.array([0.229, 0.224, 0.225])
+        image = std * image + mean
+        
+        # Image needs to be clipped between 0 and 1 or it looks like noise when displayed
+        image = np.clip(image, 0, 1)
+        
+        ax.imshow(image)
+        
+        return ax
+
 
     # Display an image along with the top 2 classes
     def view_classify(img, probabilities, classes, mapper):
         #Function for viewing an image and it's predicted classes.
-            print(img)
+            
             img_filename = img #.split('/')[-2]
             # img = Image.open('media\\images\\' +img)
 
-            fig, (ax1, ax2) = plt.subplots(figsize=(6,10), ncols=1, nrows=2)
+            fig, ax2 = plt.subplots()
+            
             # cancer_type = mapper[img_filename]
             
             # ax1.set_title(cancer_type)
@@ -117,11 +141,13 @@ class TestConfig(AppConfig):
             # ax1.axis('off')
             
             y_pos = np.arange(len(probabilities))
-            ax2.barh(y_pos, probabilities)
+            ax2.barh(y_pos, probabilities,color='blue')
             ax2.set_yticks(y_pos)
             ax2.set_yticklabels([mapper[x] for x in classes])
             ax2.invert_yaxis()
            
 
             
-            plt.show()              
+            plt.show()     
+            plt.close()    
+                 

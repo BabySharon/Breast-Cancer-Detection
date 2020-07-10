@@ -49,7 +49,7 @@ def test(request):
             with open('C:\\Users\\lenovo\\Desktop\\project\\Breast-Cancer-Detection\\django-project\\test\\cat_to_name.json', 'r') as f:
                 cat_to_name = json.load(f)
             # testobj = TestConfig(test,None)
-            loaded_model, class_to_idx = TestConfig.load_checkpoint('C:\\Users\\lenovo\\Downloads\\8982_checkpoint.pt')
+            loaded_model, class_to_idx = TestConfig.load_checkpoint('C:\\Users\\lenovo\\Downloads\\new_152_checkpoint.pt')
             TestConfig.idx_to_class = { v : k for k,v in class_to_idx.items()}
             p, c = TestConfig.predict('media\\images\\' +img, loaded_model)
             print(cat_to_name)
